@@ -22,3 +22,8 @@ void DrawHelper::DrawImage(const ImageReference& imageRef, const Rectangle& rect
         SDL_RenderTexture(renderer, texture, NULL, &rectangle.rectangle);
     }
 }
+
+void DrawHelper::DrawLine(const Point& p1, const Point& p2, const Colour& colour) const {
+    SDL_SetRenderDrawColor(renderer, colour.r, colour.g, colour.b, colour.a);
+    SDL_RenderLine(renderer, p1.point.x, p1.point.y, p2.point.x, p2.point.y);
+}

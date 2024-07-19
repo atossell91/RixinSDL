@@ -45,10 +45,3 @@ void DrawManager::DrawEverything() {
     }
     SDL_RenderPresent(renderer);
 }
-
-DrawManager* DrawManager::CreateFromWindow(SDL_Window* window) {
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, NULL);
-    DrawManager* manager = new DrawManager(renderer);
-
-    return manager;
-}

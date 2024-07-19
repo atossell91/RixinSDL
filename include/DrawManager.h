@@ -18,10 +18,6 @@ namespace RixinSDL {
         DrawHelper* drawHelper;
         std::list<IDrawable*> drawables;
 
-        // Creates the DrawHelper from the provided renderer
-        DrawManager(SDL_Renderer* r) : renderer{r}, 
-        textureRepo {new TextureRepository(renderer)},
-        drawHelper{new DrawHelper(renderer, textureRepo)} {}
      public:
         ~DrawManager();
         ImageReference AddImage(const Image& image);
@@ -30,11 +26,9 @@ namespace RixinSDL {
         void AddDrawable(IDrawable* drawable);
         void RemoveDrawable(IDrawable* drawable);
         void DrawEverything();
-
-        // Factory function because the window is not a part of the class
-        //  but is used to construct it. The default constructor is private.
-        // Also creates a renderer (from the window) and a DrawHelper using
-        //  the renderer. (Because they all use the same renderer).
-        static DrawManager* CreateFromWindow(SDL_Window* window);
+        
+        DrawManager(SDL_Renderer* r) : renderer{r}, 
+        textureRepo {new TextureRepository(renderer)},
+        drawHelper{new DrawHelper(renderer, textureRepo)} {}
     };
 }

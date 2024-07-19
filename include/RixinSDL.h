@@ -23,6 +23,7 @@ namespace RixinSDL {
       std::string gameName = "Rubber Duck";
 
       SDL_Window* window;
+      SDL_Renderer* renderer;
 
       RixinSDLContext gameContext;
       EventDispatcher eventDispatcher;
@@ -39,14 +40,7 @@ namespace RixinSDL {
       SDL_Window* initWindow(const std::string& name, int width, int height);
 
    public:
-      RixinSDL(int winWidth, int winHeight) : 
-      WindowWidth{winWidth}, WindowHeight{winHeight},
-      window{initWindow(gameName, WindowWidth, WindowHeight)},
-      drawManager{DrawManager::CreateFromWindow(window)} {
-         if (window == NULL) {
-            std::cerr << "Error - Window was not created" << std::endl;
-         }
-      }
+      RixinSDL();
 
       void Run();
       void SetGameName(std::string& name) { gameName = name; }
