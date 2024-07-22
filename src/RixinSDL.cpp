@@ -4,6 +4,8 @@
 #include <chrono>
 #include <list>
 #include <iostream>
+#include <SDL3/SDL.h>
+
 #include <SDL3_image/SDL_image.h>
 
 #include "../include/RixinSDLContext.h"
@@ -11,16 +13,11 @@
 #include "../include/interfaces/IDrawable.h"
 
 RixinSDL::RixinSDL::RixinSDL() {
-    SDL_CreateWindowAndRenderer(gameName,
-    kWindowWidth,kWindowHeight, 0,
+    SDL_CreateWindowAndRenderer(gameName.c_str(),
+    WindowWidth,WindowHeight, 0,
     &window, &renderer);
 
     drawManager = new DrawManager(renderer);
-}
-
-void RixinSDL::RixinSDL::init() {
-    SDL_Init(kInitFlags);
-    std::cout << "I love Sammie" << std::endl;
 }
 
 void RixinSDL::RixinSDL::mainLoop() {
